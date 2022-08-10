@@ -48,7 +48,7 @@ babel-otherlangs:
 colorlinks: true # Colorize links, useful for the digital version
 
 prelude-pagemark-roman: true # Use roman numerals for all pagemarks in content tables.
-#  index-roman: true # Use roman numerals for indices in content tables.
+#  index-roman: true # Use roman numerals for chapter & section ordering indices.
 
 footer:
   pagemark:  # Determine where the page counter is located, default is center, options are right & left
@@ -57,7 +57,7 @@ footer:
 
 lot: true # Enable list of tables
 lof: true # Enable list of figures
-# lol: true # Enable list of listings
+# lol: true # Enable list of listings, not supported by prelude-pagemark-roman.
 loa: true # Enable list of acronyms
 ---
 
