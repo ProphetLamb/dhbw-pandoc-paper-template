@@ -47,22 +47,19 @@ babel-otherlangs:
 
 colorlinks: true # Colorize links, useful for the digital version
 
-pagemark-roman: true # Use roman numerals for all pagemarks
-# index-roman: true # Use roman numerals for indices in content tables
+prelude-pagemark-roman: true # Use roman numerals for all pagemarks in content tables.
+#  index-roman: true # Use roman numerals for indices in content tables.
 
 footer:
   pagemark:  # Determine where the page counter is located, default is center, options are right & left
     left: true
   authors: true # Include authors in footer, away from the pagemark.
 
-# lot: true # Enable list of tables
-# lof: true # Enable list of figures
+lot: true # Enable list of tables
+lof: true # Enable list of figures
 # lol: true # Enable list of listings
+loa: true # Enable list of acronyms
 ---
-
-\pagebreak
-
-# Abkürzungsverzeichnis {#acronyms -}
 
 # Einleitung
 

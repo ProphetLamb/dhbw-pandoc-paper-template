@@ -467,14 +467,21 @@ $if(footer.authors)$
 $endif$ %(footer.authors)
 $endif$ %(pagemark)
 
+$if(prelude-pagemark-roman)$
+% use roman numerals for page numbers in content tables, show content tables in table of content
+\usepackage{tocbasic}
+\renewcommand*{\listoffigures}{\listoftoc[\listfigurename]{lof}}
+\renewcommand*{\listoftables}{\listoftoc[\listtablename]{lot}}
+\setuptoc{lof}{leveldown,totoc}
+\setuptoc{lot}{leveldown,totoc}
+$endif$ %(prelude-pagemark-roman)
+
 \begin{document}
 
-$if(index-roman)$
-% use roman numerals for ordering in content tables
-\renewcommand{\thechapter}{\Roman{chapter}}
-\renewcommand{\thesection}{\thechapter.\Roman{section}}
-\renewcommand{\thesubsection}{\thesection.\Roman{subsection}}
-$endif$ %(index-roman)
+$if(prelude-pagemark-roman)$
+% use roman numerals for page numbers in content tables, show content tables in table of content
+\pagenumbering{Roman}
+$endif$ %(prelude-pagemark-roman)
 
 $if(has-frontmatter)$
 \frontmatter
@@ -596,17 +603,12 @@ $include-before$
 
 $endfor$
 
-$if(content-table.index.roman)$
+$if(index-roman)$
 % use roman numerals for ordering
 \renewcommand{\thechapter}{\Roman{chapter}}
 \renewcommand{\thesection}{\thechapter.\Roman{section}}
 \renewcommand{\thesubsection}{\thesection.\Roman{subsection}}
-$endif$ %(content-table.index.roman)
-
-$if(pagemark-roman)$
-% use roman numerals for page numbers in content tables
-\pagenumbering{Roman}
-$endif$ %(pagemark-roman)
+$endif$ %(index-roman)
 
 $if(toc)$
 $if(toc-title)$
@@ -628,15 +630,19 @@ $endif$
 \tableofcontents
 }
 $endif$
+\pagebreak
 $endif$
 $if(lof)$
 \listoffigures
+\pagebreak
 $endif$
 $if(lot)$
 \listoftables
+\pagebreak
 $endif$
 $if(lol)$
 \listoflistings
+\pagebreak
 $endif$
 $if(linestretch)$
 \setstretch{$linestretch$}
@@ -644,6 +650,17 @@ $endif$
 $if(has-frontmatter)$
 \mainmatter
 $endif$
+$if(loa)$
+\printacronyms
+$endif$
+\pagebreak
+
+$if(prelude-pagemark-roman)$
+% use roman numerals for page numbers in content tables
+\setcounter{page}{1}
+\setcounter{section}{1}
+\pagenumbering{arabic}
+$endif$ %(prelude-pagemark-roman)
 
 $body$
 
